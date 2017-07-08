@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <title>Google Maps Latitude and Longitude Picker jQuery plugin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/demo.css"/>
+
+    <!-- Dependencies: JQuery and GMaps API should be loaded first -->
+    <script src="/javascripts/jquery-2.1.1.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- CSS and JS for our code -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-gmaps-latlon-picker.css"/>
+    <script src="/javascripts/jquery-gmaps-latlon-picker.js"></script>
+</head>
+<body>
+
+<form method="post" action="/locations/add">
+
+    <h1><% if(success) %><%= success %></h1>
+    
+
+    <fieldset class="gllpLatlonPicker">
+        
+        <br/><br/>
+        <div class="gllpMap">Google Maps</div>
+        <br/>
+        lat/lon:
+        <input type="text" name="gllpLatitude" class="gllpLatitude" value="20"/>
+        /
+        <input type="text" name = "gllpLongitude" class="gllpLongitude" value="20"/>
+        zoom: <input type="text" class="gllpZoom" value="3"/>
+        <input type="button" class="gllpUpdateButton" value="update map">
+        <br/>
+        <br>
+
+    </fieldset>
+
+    Name of the location: <input type="text" name="name" ><br>
+    Category of the location: <input type="text" name="category"><br>
+
+    <input type="submit" value="Add Location" >
+</form>
+
+</body>
+</html>

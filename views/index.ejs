@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+      <script src="/javascripts/jquery-2.1.1.min.js"></script>
+  </head>
+  <body>
+    <h1><%= title %>  <% if(!loading) { %>| <a id = "seeNearby" href="">See nearby places</a></h1>
+
+
+    <% } %>
+    <% if(loading){ %>
+    <div>
+        <h1><%= loading %></h1>
+        <script src="/javascripts/script.js"></script>
+        <% }else { %>
+        <form method="post" action="/locations/nearby">
+            <input type="hidden" name="longitudeValue" id="longitudeValue" value="<%= longitudeValue %>">
+            <input type="hidden" name="latitudeValue" id="latitudeValue" value="<%= latitudeValue %>">
+
+            Choose a category: <select name="category">
+            <% for (place of places) { if(place.category.length > 0) {%>
+              <option value="<%= place.category %>"><%= place.category %></option>
+            <% }} %>
+            </select>
+            Enter name: <input type="text" name="name" >
+            <input type="submit" value="Search" >
+        </form>
+        <div id="map"></div>
+        <script src="/javascripts/mapScript.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqTqCRrB1j_UAT1u_4ZyM-XhHO8yaLRsk&callback=initMap">
+        </script>
+        <% } %>
+        <!-- Replace the value of the key parameter with your own API key. -->
+    </div>
+
+
+  </body>
+</html>
